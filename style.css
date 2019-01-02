@@ -1,0 +1,13 @@
+.raid-stat-container {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.raid-stat {
+  background-color: rgba(90, 141, 141, 0.589);
+  border-radius: 2px;
+  padding: 4px;
+  margin-right: 5px;
+  white-space: nowrap;
+  margin-bottom: 5px;
+}

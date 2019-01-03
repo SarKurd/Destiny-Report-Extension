@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
   "name": "Destiny Report",
-  "version": "0.1",
-  "description": "Track Gambit, Crucible and Raid stats",
+  "version": "0.2",
+  "description": "Track players raid stats on Bungie.net fireteams",
   "content_scripts": [
     {
       "matches": ["https://www.bungie.net/en/ClanV2/PublicFireteam*"],
-      "js": ["content.js"],
+      "js": ["util.js", "content.js"],
       "css": ["style.css"]
     }
   ],
@@ -14,8 +14,9 @@
     "default_popup": "popup.html"
   },
   "icons": {
-    "48": "/icons/Dr-48.png",
-    "128": "/icons/DR-128.png"
+    "48": "icons/DR-48.png",
+    "128": "icons/DR-128.png",
+    "96": "icons/DR-96.png"
   },
   "permissions": ["https://www.bungie.net/"]
 }

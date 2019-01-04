@@ -95,9 +95,9 @@ function simplifyRaidStats(stats) {
   return raid;
 }
 
-function createAndAppend(parent, item, value) {
+function createAndAppend(parent, item, value, className) {
   const li = document.createElement("li");
-  li.setAttribute("class", "raid-stat");
+  li.setAttribute("class", `raid-stat ${className}`);
   li.appendChild(document.createTextNode(item + ": " + value));
 
   parent.appendChild(li);
@@ -127,15 +127,21 @@ async function startGettingPlayersData(player, membershipType, activityHeader) {
 
         const simplifiedRaid = simplifyRaidStats(raidStats);
 
-        let statsUl = document.createElement("ul");
+        const statsUl = document.createElement("ul");
         statsUl.setAttribute("class", "raid-stat-container");
 
         createAndAppend(
           statsUl,
           "SOTP(n)",
-          simplifiedRaid.SotP.normalCompletions
+          simplifiedRaid.SotP.normalCompletions,
+          "blue-badge"
         );
-        createAndAppend(statsUl, "SOTP(g)", simplifiedRaid.SotP.guided);
+        createAndAppend(
+          statsUl,
+          "SOTP(g)",
+          simplifiedRaid.SotP.guided,
+          "blue-badge"
+        );
         createAndAppend(
           statsUl,
           "LW(n)",
@@ -145,52 +151,59 @@ async function startGettingPlayersData(player, membershipType, activityHeader) {
         createAndAppend(
           statsUl,
           "SOS(n)",
-          simplifiedRaid.SoS.normalCompletions
+          simplifiedRaid.SoS.normalCompletions,
+          "purple-badge"
         );
-        createAndAppend(statsUl, "SOS(g)", simplifiedRaid.SoS.guided);
+        createAndAppend(
+          statsUl,
+          "SOS(g)",
+          simplifiedRaid.SoS.guided,
+          "purple-badge"
+        );
         createAndAppend(
           statsUl,
           "SOS(p)",
-          simplifiedRaid.EoW.prestigeCompletions
+          simplifiedRaid.EoW.prestigeCompletions,
+          "purple-badge"
         );
         createAndAppend(
           statsUl,
           "EOW(n)",
-          simplifiedRaid.EoW.normalCompletions
+          simplifiedRaid.EoW.normalCompletions,
+          "red-badge"
         );
-        createAndAppend(statsUl, "EOW(g)", simplifiedRaid.EoW.guided);
+        createAndAppend(
+          statsUl,
+          "EOW(g)",
+          simplifiedRaid.EoW.guided,
+          "red-badge"
+        );
         createAndAppend(
           statsUl,
           "EOW(p)",
-          simplifiedRaid.EoW.prestigeCompletions
+          simplifiedRaid.EoW.prestigeCompletions,
+          "red-badge"
         );
         createAndAppend(
           statsUl,
           "LN(n)",
-          simplifiedRaid.leviathan.normalCompletions
+          simplifiedRaid.leviathan.normalCompletions,
+          "yellow-badge"
         );
-        createAndAppend(statsUl, "LN(g)", simplifiedRaid.leviathan.guided);
+        createAndAppend(
+          statsUl,
+          "LN(g)",
+          simplifiedRaid.leviathan.guided,
+          "yellow-badge"
+        );
         createAndAppend(
           statsUl,
           "LN(p)",
-          simplifiedRaid.leviathan.prestigeCompletions
+          simplifiedRaid.leviathan.prestigeCompletions,
+          "yellow-badge"
         );
-        statsUl.style.marginTop = "20px";
-        const playerTMP = player.innerHTML;
-        const DIV1 = document.createElement("div");
-        DIV1.innerHTML = playerTMP;
-        DIV1.style.display = "flex";
-        player.innerHTML = "";
-        player.style.alignItems = "flex-start";
-
-        const statsAndBadgesContainer = document.createElement("div");
-        statsAndBadgesContainer.style.display = "flex";
-        statsAndBadgesContainer.style.flexDirection = "column";
-
-        statsAndBadgesContainer.appendChild(DIV1);
-        statsAndBadgesContainer.appendChild(statsUl);
-
-        player.appendChild(statsAndBadgesContainer);
+        player.style.paddingRight = "5px";
+        player.appendChild(statsUl);
       }
     }
   } catch (err) {

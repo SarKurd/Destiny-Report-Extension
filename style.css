@@ -2,6 +2,9 @@
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .raid-stat {
   background-color: rgba(90, 141, 141, 0.589);
@@ -10,4 +13,19 @@
   margin-right: 5px;
   white-space: nowrap;
   margin-bottom: 5px;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.red-badge {
+  background-color: red;
+}
+.yellow-badge {
+  background-color: green;
+}
+.blue-badge {
+  background-color: blue;
+}
+.purple-badge {
+  background-color: purple;
 }
